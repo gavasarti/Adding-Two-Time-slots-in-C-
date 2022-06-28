@@ -1,0 +1,57 @@
+#include <iostream>
+using namespace std;
+class timeSum{
+    public:
+    int hr1, min1, sec1,hr2,min2,sec2;
+    
+    void getData()
+    {
+        cout<<"Enter the Time1: "<<endl;
+        h1: cout<<"Hour: ";cin>>hr1;
+        if(hr1>24) {cout<<"Invalid Hour!"<<endl;goto h1;}
+        m1: cout<<"Minute: ";cin>>min1;
+        if(min1>60) {cout<<"Invalid Minutes!"<<endl; goto m1;}
+        s1: cout<<"Second: ";cin>>sec1;
+        if(sec1>60) {cout<<"Invalid Seconds!"<<endl; goto s1;}
+        cout<<"Enter the Time2: "<<endl;
+        h2: cout<<"Hour: ";cin>>hr2;
+        if(hr2>24) {cout<<"Invalid Hour!"<<endl; goto h2;}
+        m2: cout<<"Minute: ";cin>>min2;
+        if(min2>60) {cout<<"Invalid Minutes!"<<endl; goto m2;}
+        s2: cout<<"Second: ";cin>>sec2;
+        if(sec2>60) {cout<<"Invalid Seconds!"<<endl; goto s2;}
+        
+        cout<<"The First Time Valaue Entered is: "<<hr1<<":"<<min1<<":"<<sec1<<endl;
+        cout<<"The First Time Valaue Entered is: "<<hr2<<":"<<min2<<":"<<sec2<<endl;
+    }
+    friend void SumTime(timeSum t)
+    {
+        int h,m,s;
+        h=t.hr1+t.hr2;
+        m=t.min1+t.min2;
+        s=t.sec1+t.sec2;
+        if(s>60)
+        {
+            s=(s%60);
+            m++;
+        }
+        if(m>60)
+        {    
+            m=(m%60);
+            h++;
+        }
+        if(h>24)
+        {
+            cout<<"Invalid Addition of two time values"<<endl;
+        }
+        cout<<"The Sum of two time values is:h "<<h<<":"<<m<<":"<<s<<endl;
+    }
+};
+int main()
+{
+    timeSum t;
+    cout<<"This program performs sum of two time values"<<endl;
+    t.getData();
+    SumTime(t);
+    return 0;
+}
